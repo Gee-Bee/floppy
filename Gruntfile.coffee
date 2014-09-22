@@ -3,9 +3,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
+    deployDir: 'deploy'
     coffee:
       compile:
         expand: true
@@ -28,14 +30,20 @@ module.exports = (grunt) ->
           base: 'src'
       deploy:
         options:
-          base: 'deploy'
+          base: '<%= deployDir %>'
     uglify:
       deploy:
         src: [
           'src/vendor/phaser.js'
           'src/js/*.js'
         ]
-        dest: 'deploy/<%= pkg.name %>.js'
+        dest: '<%= deployDir %>/<%= pkg.name %>.js'
+    copy:
+      assets:
+        cwd: 'src/assets'
+        src: '**'
+        dest: '<%= deployDir %>/assets'
+        expand: true
 
-  grunt.registerTask 'default', ['coffee', 'uglify', 'connect:deploy', 'watch:empty']
+  grunt.registerTask 'default', ['coffee', 'uglify', 'copy:assets', 'connect:deploy', 'watch:empty']
   grunt.registerTask 'dev', ['coffee', 'connect:dev', 'watch:coffee']
