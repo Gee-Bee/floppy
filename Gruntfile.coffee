@@ -4,6 +4,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-gh-pages'
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
@@ -44,6 +45,11 @@ module.exports = (grunt) ->
         src: '**'
         dest: '<%= deployDir %>/assets'
         expand: true
+    'gh-pages':
+      options:
+        base: 'deploy'
+      src: '**'
 
   grunt.registerTask 'default', ['coffee', 'uglify', 'copy:assets', 'connect:deploy', 'watch:empty']
   grunt.registerTask 'dev', ['coffee', 'connect:dev', 'watch:coffee']
+  grunt.registerTask 'gh', ['coffee', 'uglify', 'copy:assets', 'gh-pages']
