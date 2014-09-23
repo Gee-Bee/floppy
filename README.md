@@ -1,10 +1,14 @@
 Floppy Astronaut
 ================
 
-Check it out [here](http://gee-bee.github.io/floppy) or
+Check it out [here](http://gee-bee.github.io/floppy) ||
+
+install locally
 
 ~~~shell
-git clone https://github.com/Gee-Bee/floppy.git && cd floppy && grunt
+npm install -g grunt-cli coffee-script
+git clone https://github.com/Gee-Bee/floppy.git && cd floppy
+npm install && grunt
 ~~~
 
-[here](http://localhost:8000)
+and visit [here](http://localhost:8000).
