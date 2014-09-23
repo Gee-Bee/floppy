@@ -48,6 +48,9 @@ module.exports = (grunt) ->
     'gh-pages':
       options:
         base: 'deploy'
+        user:
+          name: 'Gee Bee'
+          email: 'greg.bunia@gmail.com'
       src: '**'
 
   grunt.registerTask 'default', ['coffee', 'uglify', 'copy:assets', 'connect:deploy', 'watch:empty']
