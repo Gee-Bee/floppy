@@ -1,12 +1,10 @@
-NodeJS-Grunt based Phaser Development Template
-==============================================
+Floppy Astronaut
+================
 
-## Instalation
+Check it out [here](http://gee-bee.github.io/floppy) or
 
 ~~~shell
-npm install -g grunt-cli
-npm install coffee-script grunt \
-  grunt-contrib-coffee grunt-contrib-connect \
-  grunt-contrib-uglify grunt-contrib-watch \
-  --save-dev
+git clone https://github.com/Gee-Bee/floppy.git && cd floppy && grunt
 ~~~
+
+[here](http://localhost:8000)

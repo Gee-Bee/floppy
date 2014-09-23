@@ -4,8 +4,12 @@ JET = 420
 OPENING = 200
 SPAWN_RATE = 1.25
 
-state =
+assetsUrl = do ->
+  pathname = window.location.pathname
+  (url) ->
+    pathname + url
 
+state =
   init: ->
     text = "Phaser Version #{Phaser.VERSION} works!"
     style = { font: "24px Arial", fill: "#fff", align: "center" }
@@ -14,12 +18,12 @@ state =
 
   preload: ->
     # this == game
-    @load.image 'wall', '/assets/wall.png'
-    @load.image 'background', '/assets/background-texture.png'
-    @load.spritesheet 'player', '/assets/player.png', 48, 48
-    @load.audio 'jet', '/assets/jet.wav'
-    @load.audio 'score', '/assets/score.wav'
-    @load.audio 'hurt', '/assets/hurt.wav'
+    @load.image 'wall', assetsUrl('assets/wall.png')
+    @load.image 'background', assetsUrl('assets/background-texture.png')
+    @load.spritesheet 'player', assetsUrl('assets/player.png'), 48, 48
+    @load.audio 'jet', assetsUrl('assets/jet.wav')
+    @load.audio 'score', assetsUrl('assets/score.wav')
+    @load.audio 'hurt', assetsUrl('assets/hurt.wav')
 
   create: ->
     @physics.startSystem Phaser.Physics.ARCADE
